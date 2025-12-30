@@ -164,13 +164,14 @@
                 </div>
             </div>
         </div>
-        <!-- Call to action-->
+        <!-- Call to action
         <section class="page-section bg-dark text-white">
             <div class="container px-4 px-lg-5 text-center">
                 <h2 class="mb-4">Descarga gratuita en Start Bootstrap!</h2>
                 <a class="btn btn-light btn-xl" href="https://startbootstrap.com/theme/creative/">¡Descargar ahora!</a>
             </div>
         </section>
+        -->
         <!-- Contact-->
         <section class="page-section" id="contact">
             <div class="container px-4 px-lg-5">
@@ -184,43 +185,38 @@
                 <div class="row gx-4 gx-lg-5 justify-content-center mb-5">
                     <div class="col-lg-6">
                         <!-- * * * * * * * * * * * * * * *-->
-                        <!-- * * SB Forms Contact Form * *-->
+                        <!-- * * Formulario de Contacto * *-->
                         <!-- * * * * * * * * * * * * * * *-->
-                        <!-- This form is pre-integrated with SB Forms.-->
-                        <!-- To make this form functional, sign up at-->
-                        <!-- https://startbootstrap.com/solution/contact-forms-->
-                        <!-- to get an API token!-->
-                        <form id="contactForm" data-sb-form-api-token="API_TOKEN">
+                        <form id="contactForm">
                             <!-- Name input-->
                             <div class="form-floating mb-3">
-                                <input class="form-control" id="name" type="text" placeholder="Enter your name..." data-sb-validations="required" />
+                                <input class="form-control" id="name" type="text" placeholder="Enter your name..." required />
                                 <label for="name">Nombre y Apellido</label>
-                                <div class="invalid-feedback" data-sb-feedback="name:required">Se requiere nombre y apellido.</div>
+                                <div class="invalid-feedback">Se requiere nombre y apellido.</div>
                             </div>
                             <!-- Empresa input-->
                             <div class="form-floating mb-3">
-                                <input class="form-control" id="empresa" type="text" placeholder="Enter your company..." data-sb-validations="required" />
+                                <input class="form-control" id="empresa" type="text" placeholder="Enter your company..." required />
                                 <label for="empresa">Empresa</label>
-                                <div class="invalid-feedback" data-sb-feedback="empresa:required">Se requiere nombre de la empresa.</div>
+                                <div class="invalid-feedback">Se requiere nombre de la empresa.</div>
                             </div>
                             <!-- Email address input-->
                             <div class="form-floating mb-3">
-                                <input class="form-control" id="email" type="email" placeholder="name@example.com" data-sb-validations="required,email" />
+                                <input class="form-control" id="email" type="email" placeholder="name@example.com" required />
                                 <label for="email">Correo electrónico</label>
-                                <div class="invalid-feedback" data-sb-feedback="email:required">Se requiere un correo electrónico.</div>
-                                <div class="invalid-feedback" data-sb-feedback="email:email">El correo electrónico no es válido.</div>
+                                <div class="invalid-feedback">Se requiere un correo electrónico válido.</div>
                             </div>
                             <!-- Phone number input-->
                             <div class="form-floating mb-3">
-                                <input class="form-control" id="phone" type="tel" placeholder="123 4567890" data-sb-validations="required" />
+                                <input class="form-control" id="phone" type="tel" placeholder="123 4567890" required />
                                 <label for="phone">Número de teléfono</label>
-                                <div class="invalid-feedback" data-sb-feedback="phone:required">Se requiere un número de teléfono.</div>
+                                <div class="invalid-feedback">Se requiere un número de teléfono.</div>
                             </div>
                             <!-- Message input-->
                             <div class="form-floating mb-3">
-                                <textarea class="form-control" id="message" type="text" placeholder="Escribe tu mensaje aquí..." style="height: 10rem" data-sb-validations="required"></textarea>
+                                <textarea class="form-control" id="message" type="text" placeholder="Escribe tu mensaje aquí..." style="height: 10rem" required></textarea>
                                 <label for="message">Mensaje</label>
-                                <div class="invalid-feedback" data-sb-feedback="message:required">Se requiere un mensaje.</div>
+                                <div class="invalid-feedback">Se requiere un mensaje.</div>
                             </div>
                             <!-- Submit success message-->
                             <!---->
@@ -229,25 +225,26 @@
                             <div class="d-none" id="submitSuccessMessage">
                                 <div class="text-center mb-3">
                                     <div class="fw-bolder">¡Envío de formulario exitoso!</div>
-                                    Para activar este formulario, regístrate en
+                                    <!-- Para activar este formulario, regístrate en
                                     <br />
-                                    <a href="https://startbootstrap.com/solution/contact-forms">https://startbootstrap.com/solution/contact-forms</a>
+                                    <a href="https://startbootstrap.com/solution/contact-forms">https://startbootstrap.com/solution/contact-forms</a> 
+                                    -->
                                 </div>
                             </div>
                             <!-- Submit error message-->
                             <!---->
                             <!-- This is what your users will see when there is-->
                             <!-- an error submitting the form-->
-                            <div class="d-none" id="submitErrorMessage"><div class="text-center text-danger mb-3">Error sending message!</div></div>
+                            <div class="d-none" id="submitErrorMessage"><div class="text-center text-danger mb-3">Error al enviar el mensaje!</div></div>
                             <!-- Submit Button-->
-                            <div class="d-grid"><button class="btn btn-primary btn-xl disabled" id="submitButton" type="submit">Submit</button></div>
+                            <div class="d-grid"><button class="btn btn-primary btn-xl disabled" id="submitButton" type="submit">Enviar</button></div>
                         </form>
                     </div>
                 </div>
                 <div class="row gx-4 gx-lg-5 justify-content-center">
                     <div class="col-lg-4 text-center mb-5 mb-lg-0">
                         <i class="bi-phone fs-2 mb-3 text-muted"></i>
-                        <div>+1 (555) 123-4567</div>
+                        <div>+54 (342) 455 0276</div>
                     </div>
                 </div>
             </div>
@@ -262,10 +259,5 @@
         <script src="https://cdnjs.cloudflare.com/ajax/libs/SimpleLightbox/2.1.0/simpleLightbox.min.js"></script>
         <!-- Core theme JS-->
         <script src="js/scripts.js"></script>
-        <!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *-->
-        <!-- * *                               SB Forms JS                               * *-->
-        <!-- * * Activate your form at https://startbootstrap.com/solution/contact-forms * *-->
-        <!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *-->
-        <script src="https://cdn.startbootstrap.com/sb-forms-latest.js"></script>
     </body>
 </html>
