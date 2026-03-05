@@ -61,6 +61,7 @@ window.addEventListener('DOMContentLoaded', event => {
     const submitButton = document.getElementById('submitButton');
     const successMessage = document.getElementById('submitSuccessMessage');
     const errorMessage = document.getElementById('submitErrorMessage');
+    const errorMessageText = errorMessage ? errorMessage.querySelector('.text-danger') : null;
 
     if (contactForm) {
         // Habilitar el botón cuando todos los campos sean válidos
@@ -89,6 +90,40 @@ window.addEventListener('DOMContentLoaded', event => {
             }
         }
 
+        function escapeHtml(value) {
+            return String(value)
+                .replace(/&/g, '&amp;')
+                .replace(/</g, '&lt;')
+                .replace(/>/g, '&gt;')
+                .replace(/"/g, '&quot;')
+                .replace(/'/g, '&#39;');
+        }
+
+        function formatValidationErrors(errors) {
+            if (!errors || typeof errors !== 'object') {
+                return '';
+            }
+
+            const fieldLabels = {
+                to: 'destinatario',
+                subject: 'asunto',
+                body: 'mensaje',
+                from: 'remitente',
+                replyTo: 'respuesta',
+                cc: 'CC',
+                bcc: 'BCC',
+                isHtml: 'formato'
+            };
+
+            return Object.entries(errors)
+                .map(([field, message]) => {
+                    const normalizedField = field.replace(/[\[\]]/g, '');
+                    const label = fieldLabels[normalizedField] || normalizedField;
+                    return `${escapeHtml(label)}: ${escapeHtml(message)}`;
+                })
+                .join('<br>');
+        }
+
         // Manejar el envío del formulario
         contactForm.addEventListener('submit', async (e) => {
             e.preventDefault();
@@ -104,6 +139,9 @@ window.addEventListener('DOMContentLoaded', event => {
             // Ocultar mensajes previos
             successMessage.classList.add('d-none');
             errorMessage.classList.add('d-none');
+            if (errorMessageText) {
+                errorMessageText.textContent = 'Error al enviar el mensaje!';
+            }
 
             // Obtener los datos del formulario
             const name = document.getElementById('name').value.trim();
@@ -122,7 +160,6 @@ window.addEventListener('DOMContentLoaded', event => {
                 <p><strong>Mensaje:</strong></p>
                 <p>${message.replace(/\n/g, '<br>')}</p>
             `;
-
             try {
                 // Enviar el email a través de la API
                 const response = await fetch('http://localhost:8080/backend/public/api/email/send', {
@@ -140,6 +177,13 @@ window.addEventListener('DOMContentLoaded', event => {
                     })
                 });
 
+                let responseData = null;
+                try {
+                    responseData = await response.json();
+                } catch (_) {
+                    // Si la API no devuelve JSON válido, se mantiene el mensaje genérico.
+                }
+
                 if (response.ok) {
                     // Mostrar mensaje de éxito
                     successMessage.classList.remove('d-none');
@@ -147,6 +191,21 @@ window.addEventListener('DOMContentLoaded', event => {
                     contactForm.reset();
                     submitButton.classList.add('disabled');
                 } else {
+                    if (responseData) {
+                        console.error('Error de API al enviar email:', responseData);
+                        if (errorMessageText) {
+                            const apiMessage = responseData.message || responseData.error;
+                            const fieldErrors = formatValidationErrors(responseData.errors);
+
+                            if (fieldErrors) {
+                                errorMessageText.innerHTML = `Error al enviar:<br>${fieldErrors}`;
+                            } else {
+                                errorMessageText.textContent = apiMessage
+                                    ? `Error al enviar: ${apiMessage}`
+                                    : 'Error al enviar el mensaje!';
+                            }
+                        }
+                    }
                     // Mostrar mensaje de error
                     errorMessage.classList.remove('d-none');
                 }
