@@ -64,6 +64,23 @@ body {
   font-weight: 600;
 }
 
+.menu-toggle {
+  display: none;
+  background: transparent;
+  border: 0;
+  padding: 0.2rem;
+  cursor: pointer;
+}
+
+.menu-toggle span {
+  display: block;
+  width: 24px;
+  height: 2px;
+  background: var(--white);
+  margin: 5px 0;
+  border-radius: 999px;
+}
+
 .hero {
   background: var(--white);
   padding: 2.2rem;
@@ -189,7 +206,67 @@ ul { padding-left: 1.2rem; }
 }
 
 @media (max-width: 768px) {
-  .grid { grid-template-columns: 1fr; }
-  .hero { padding: 1.3rem; }
-  .hero-visual { grid-template-columns: 1fr; }
+  .container {
+    width: min(100%, calc(100% - 1.25rem));
+  }
+
+  .nav {
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  .menu-toggle {
+    display: inline-block;
+  }
+
+  .nav-links {
+    display: none;
+    width: 100%;
+    flex-direction: column;
+    gap: 0.7rem;
+    padding-top: 0.7rem;
+  }
+
+  .nav-links.is-open {
+    display: flex;
+  }
+
+  .grid {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+
+  .hero {
+    padding: 1.15rem;
+    margin: 1rem 0 1.3rem;
+  }
+
+  .hero-visual {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+
+  .hero-visual img {
+    max-height: 220px;
+  }
+
+  .hero h1 {
+    font-size: 1.5rem;
+    line-height: 1.25;
+  }
+
+  .btn {
+    width: 100%;
+    text-align: center;
+  }
+
+  .card {
+    padding: 1.15rem;
+  }
+
+  .site-footer {
+    font-size: 0.9rem;
+    padding: 1.2rem 0.8rem 1.5rem;
+  }
 }
