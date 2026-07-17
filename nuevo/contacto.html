@@ -3,12 +3,20 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>FOS | Contacto</title>
-  <meta name="description" content="Contactá a FOS para cotizar productos, consultar disponibilidad o recibir asesoramiento comercial." />
+  <title>Contacto FOS | Cotización y asesoramiento para tu empresa</title>
+  <meta name="description" content="Contactá a FOS para solicitar cotización, consultar disponibilidad y recibir asesoramiento comercial para tus necesidades industriales." />
+  <meta name="keywords" content="contacto FOS, cotización, asesoramiento industrial, comprar tapones acero inoxidable" />
+  <meta name="robots" content="index,follow" />
+  <meta property="og:title" content="Contacto FOS | Cotización y asesoramiento para tu empresa" />
+  <meta property="og:locale" content="es_AR" />
+  <meta property="og:site_name" content="FOS" />
+  <meta property="og:description" content="Solicitá cotización o asesoramiento con FOS para productos industriales y de mantenimiento." />
+  <meta property="og:image" content="assets/foto_contacto.jpg" />
   <link rel="stylesheet" href="css/styles.css" />
   <link rel="stylesheet" href="css/fos-site.css" />
 </head>
 <body>
+  <a class="skip-link" href="#mainContent">Saltar al contenido principal</a>
   <header class="site-header">
     <nav class="container nav">
       <a class="brand" href="index.html">FOS</a>
@@ -24,41 +32,42 @@
     </nav>
   </header>
 
-  <main class="container">
+  <main id="mainContent" class="container">
     <section class="hero hero-small hero-visual">
       <div class="hero-copy">
         <h1>Contactá a FOS</h1>
         <p>Completá el formulario y te responderemos con información sobre productos, disponibilidad y asesoramiento comercial.</p>
       </div>
-      <img src="https://images.unsplash.com/photo-1520607162513-77705c0f0d4a?auto=format&fit=crop&w=1200&q=80" alt="Equipo comercial asesorando a un cliente" />
+      <img src="assets/foto_contacto.jpg" alt="Equipo comercial asesorando a un cliente" />
     </section>
 
     <section class="card contact-form-card" id="contactFormCard">
       <h2>Envíanos un mensaje</h2>
+      <p class="form-help">Completá los campos y te responderemos a la brevedad.</p>
       <form id="contactForm" novalidate>
         <div class="form-row">
-          <label for="name">Nombre</label>
-          <input id="name" name="name" type="text" required />
+          <label for="name">Nombre <span aria-hidden="true">*</span></label>
+          <input id="name" name="name" type="text" autocomplete="given-name" required aria-required="true" />
         </div>
         <div class="form-row">
-          <label for="empresa">Empresa</label>
-          <input id="empresa" name="empresa" type="text" required />
+          <label for="empresa">Empresa <span aria-hidden="true">*</span></label>
+          <input id="empresa" name="empresa" type="text" autocomplete="organization" required aria-required="true" />
         </div>
         <div class="form-row">
-          <label for="email">Correo electrónico</label>
-          <input id="email" name="email" type="email" required />
+          <label for="email">Correo electrónico <span aria-hidden="true">*</span></label>
+          <input id="email" name="email" type="email" autocomplete="email" required aria-required="true" />
         </div>
         <div class="form-row">
-          <label for="phone">Teléfono</label>
-          <input id="phone" name="phone" type="tel" required />
+          <label for="phone">Teléfono <span aria-hidden="true">*</span></label>
+          <input id="phone" name="phone" type="tel" autocomplete="tel" required aria-required="true" />
         </div>
         <div class="form-row">
-          <label for="message">Mensaje</label>
-          <textarea id="message" name="message" rows="5" required></textarea>
+          <label for="message">Mensaje <span aria-hidden="true">*</span></label>
+          <textarea id="message" name="message" rows="5" required aria-required="true"></textarea>
         </div>
         <button class="btn btn-primary" id="submitButton" type="submit">Enviar</button>
-        <p id="submitSuccessMessage" class="success-message" hidden>Mensaje enviado correctamente.</p>
-        <p id="submitErrorMessage" class="error-message" hidden>Error al enviar el mensaje. Inténtalo de nuevo.</p>
+        <p id="submitSuccessMessage" class="success-message" aria-live="polite" hidden>Mensaje enviado correctamente.</p>
+        <p id="submitErrorMessage" class="error-message" aria-live="polite" hidden>Por favor, completá todos los campos obligatorios.</p>
       </form>
     </section>
 

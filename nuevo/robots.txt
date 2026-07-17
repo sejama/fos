@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://taponesfos.com.ar/sitemap.xml
